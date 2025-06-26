@@ -101,7 +101,7 @@ heroku open
   * Pundit
   * Kaminari
 
-[codebeat-badge]: https://codebeat.co/badges/79b5a436-3241-4d15-b961-04c6fddc6001
+[codebeat-badge]: https://codebeat.co/badges/e1349c62-9aa1-4a7d-bde9-d575e065fd6d
 [codebeat]: https://codebeat.co/projects/github-com-m4rcelotoledo-deals-master
 
 [codecov-badge]: https://codecov.io/gh/m4rcelotoledo/deals/branch/master/graph/badge.svg
