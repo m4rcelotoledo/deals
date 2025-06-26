@@ -11,7 +11,7 @@ feature 'User destroy a deal' do
     visit root_path
     click_on 'Destroy'
 
-    expect(page).to have_content('Your deal successfully destroyed!')
+    expect(page).to have_content('Your deal was successfully destroyed!')
     expect(page).to have_content('Current Deals:')
     expect(page).to have_no_css('td', text: 'Founders Brewery')
     expect(page).to have_no_css('td', text: 'Multi Million Dollars Sale')
