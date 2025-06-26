@@ -12,14 +12,14 @@ To run on Heroku, [access here](https://mydeals.herokuapp.com/)
 ## Technical Informations and dependencies
 
 ``` code
-* The Ruby language   # version 3.0.2
-* The Rails gem       # version 6.1
-* Capybara:           # version 3.36
-* RSpec-Rails         # version 5.0.2
-* Rubocop             # version 1.22.3
-* PostgreSQL          # version 10
-* Docker              # version 20.10.9
-* Docker Compose      # version 2.0.1
+* The Ruby language   # version 3.4.4
+* The Rails gem       # version 8.0.2
+* Capybara:           # version 3.40
+* RSpec-Rails         # version 8.0.1
+* Rubocop             # version 1.77.0
+* PostgreSQL          # version 17
+* Docker              # version 28.2.2
+* Docker Compose      # version 2.37.1
 ```
 
 ## To use
@@ -27,7 +27,7 @@ To run on Heroku, [access here](https://mydeals.herokuapp.com/)
 Clone the project:
 
 ``` Shell
-git clone git@github.com:marcelotoledo5000/deals.git
+git clone git@github.com:m4rcelotoledo/deals.git
 cd deals
 ```
 
@@ -51,7 +51,7 @@ host: localhost   # when using localhost
 
 System dependencies
 
-* Install and configure the database: [Postgresql-10](https://www.postgresql.org/download/)
+* Install and configure the database: [Postgresql-17](https://www.postgresql.org/download/)
 
 And then:
 
@@ -73,7 +73,7 @@ You should see a home page with a "log in" or "sign up" form.
 
 ### Dockerfile
 
-[Dockerfile is here](https://github.com/marcelotoledo5000/Dockerfiles)
+[Dockerfile is here](https://github.com/m4rcelotoledo/Dockerfiles)
 
 ### Deploy to Heroku
 
@@ -102,10 +102,10 @@ heroku open
   * Kaminari
 
 [codebeat-badge]: https://codebeat.co/badges/79b5a436-3241-4d15-b961-04c6fddc6001
-[codebeat]: https://codebeat.co/projects/github-com-marcelotoledo5000-deals-master
+[codebeat]: https://codebeat.co/projects/github-com-m4rcelotoledo-deals-master
 
-[codecov-badge]: https://codecov.io/gh/marcelotoledo5000/deals/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/marcelotoledo5000/deals
+[codecov-badge]: https://codecov.io/gh/m4rcelotoledo/deals/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/m4rcelotoledo/deals
 
-[actions-badge]: https://github.com/marcelotoledo5000/deals/actions/workflows/ruby.yml/badge.svg
-[actions]: https://github.com/marcelotoledo5000/deals/actions/workflows/ruby.yml
+[actions-badge]: https://github.com/m4rcelotoledo/deals/actions/workflows/ruby.yml/badge.svg
+[actions]: https://github.com/m4rcelotoledo/deals/actions/workflows/ruby.yml
