@@ -4,10 +4,25 @@ class DealsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_deal, only: %i[destroy edit lost update won]
 
-  # TODO: add this messages to locale
-  SUCCESS_MSG = 'Your deal was successfully sent!'
-  WARNING_MSG = 'You need to fill all fields!'
-  DESTROYED_MSG = 'Your deal successfully destroyed!'
+  SUCCESS_MSG = I18n.t('deal_success')
+  WARNING_MSG = I18n.t('deal_warning')
+
+  def index
+    @deal = Deal.new
+
+    Deal.where(user: current_user).then do |deals|
+      @last_deal = deals.last
+
+      if search_params.present?
+        deals = deals.merge(search_deals)
+        flash[:warning] = I18n.t('deal_not_found') if deals.empty?
+      end
+
+      @deals = deals.order(created_at: :desc)
+    end
+  end
+
+  def edit; end
 
   def create
     Deal.create(deal_params).then do |deal|
@@ -19,51 +34,34 @@ class DealsController < ApplicationController
     end
   end
 
-  def destroy
-    flash[:success] = DESTROYED_MSG if deal.destroy
-
-    redirect_to root_path
-  end
-
-  def edit; end
-
-  def index
-    @deal = Deal.new
-
-    Deal.where(user: current_user).then do |deals|
-      @last_deal = deals.last
-
-      if search_params.present?
-        deals = deals.merge(search_deals)
-        flash[:warning] = 'Deal not found' if deals.empty?
-      end
-
-      @deals = deals.order(created_at: :desc)
-    end
-  end
-
   def lost
     deal.lost!
-    flash[:success] = 'Your deal was Lost!'
+    flash[:success] = I18n.t('deal_lost')
 
     redirect_to root_path
   end
 
   def update
     if deal.update(deal_params)
-      flash[:success] = 'Your deal successfully updated!'
+      flash[:success] = I18n.t('deal_updated')
       redirect_to root_path
     else
       @deal = deal
-      flash[:warning] = 'You need to fill all fields!'
+      flash[:warning] = I18n.t('deal_missing_fields')
 
       render :edit
     end
   end
 
+  def destroy
+    flash[:success] = I18n.t('deal_destroyed') if deal.destroy
+
+    redirect_to root_path
+  end
+
   def won
     deal.won!
-    flash[:success] = 'Your deal was Won!'
+    flash[:success] = I18n.t('deal_won')
 
     redirect_to root_path
   end
@@ -73,8 +71,7 @@ class DealsController < ApplicationController
   attr_accessor :deal
 
   def deal_params
-    params.require(:deal).permit(:customer, :description, :value, :status,
-                                 :closing_date_probability, :user_id)
+    params.expect(deal: %i[customer description value status closing_date_probability user_id])
   end
 
   def search_params
