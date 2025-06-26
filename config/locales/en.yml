@@ -7,3 +7,4 @@ en:
   deal_success: "Your deal was successfully sent!"
   deal_warning: "You need to fill all fields!"
   deal_destroyed: "Your deal was successfully destroyed!"
+  record_not_found: "Record not found"
