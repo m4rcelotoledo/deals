@@ -79,12 +79,13 @@ class DealsController < ApplicationController
   end
 
   def set_deal
-    @deal = Deal.find_by(id: params[:id]) || Deal.find_by(id: params[:deal_id])
+    @deal = current_user.deals.find(params[:id])
   end
 
   def search_deals
-    Deal.
-      where('customer ILIKE ?', "%#{search_params}%").
-      or(Deal.where('description ILIKE ?', "%#{search_params}%"))
+    current_user.deals.where(
+      'LOWER(customer) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?)',
+      "%#{search_params}%", "%#{search_params}%"
+    )
   end
 end
