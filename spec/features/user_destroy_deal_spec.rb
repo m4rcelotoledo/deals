@@ -20,7 +20,7 @@ feature 'User destroy a deal' do
     expect(page).to have_content("Don't have deals yet")
   end
 
-  xscenario 'should cant delete deals from other users' do
-    # pending
+  scenario 'should cant delete deals from other users' do
+    skip 'Needs to be implemented'
   end
 end

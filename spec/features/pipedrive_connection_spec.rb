@@ -20,7 +20,7 @@ feature 'Connection with Pipeline via API' do
     expect(page).to have_button('Cancel')
   end
 
-  # scenario 'connection established' do
-  #
-  # end
+  scenario 'connection established' do
+    skip 'Needs to be implemented'
+  end
 end

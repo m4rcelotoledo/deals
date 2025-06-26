@@ -23,7 +23,7 @@ feature 'User set a deal as won' do
     expect(deal).to be_won
   end
 
-  xscenario 'should cant won deals from other users' do
-    # pending
+  scenario 'should cant won deals from other users' do
+    skip 'Needs to be implemented'
   end
 end
