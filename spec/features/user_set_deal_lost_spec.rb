@@ -23,7 +23,7 @@ feature 'User set a deal as lost' do
     expect(deal).to be_lost
   end
 
-  xscenario 'should cant lost deals from other users' do
-    # pending
+  scenario 'should cant lost deals from other users' do
+    skip 'Needs to be implemented'
   end
 end

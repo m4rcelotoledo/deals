@@ -39,7 +39,7 @@ feature 'User edit a deal' do
     expect(page).to have_content('You need to fill all fields!')
   end
 
-  xscenario 'should cant edit deals from other users' do
-    # pending
+  scenario 'should cant edit deals from other users' do
+    skip 'Needs to be implemented'
   end
 end

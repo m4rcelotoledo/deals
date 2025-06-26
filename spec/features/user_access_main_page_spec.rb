@@ -87,11 +87,11 @@ feature 'User access main page' do
 
     visit root_path
 
+    expect(page).to have_css('td', text: deal1.customer)
+    expect(page).to have_css('td', text: deal2.customer)
     expect(page).to have_no_css('td', text: another_deal.customer)
     expect(page).to have_no_css('td', text: another_deal.description)
     expect(page).to have_no_css('td', text: another_deal.status.camelcase)
     expect(page).to have_no_css('td', text: another_deal.value)
-    expect(page).to have_css('td', text: deal1.customer)
-    expect(page).to have_css('td', text: deal2.customer)
   end
 end
