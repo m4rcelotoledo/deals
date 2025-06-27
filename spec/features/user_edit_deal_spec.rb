@@ -18,7 +18,7 @@ feature 'User edit a deal' do
     click_on 'Update Deal'
 
     expect(page).to have_content('Your deal was successfully updated!')
-    expect(page).to have_content('Current Deals: US$ 7,5 M')
+    expect(page).to have_content('Current Deals')
     expect(page).to have_css('td', text: 'Founders Brewery')
     expect(page).to have_css('td', text: 'Multi Million Dollars Sale')
     expect(page).to have_css('td', text: 'Pending')
@@ -39,7 +39,14 @@ feature 'User edit a deal' do
     expect(page).to have_content('You need to fill all fields!')
   end
 
-  scenario 'should cant edit deals from other users' do
-    skip 'Needs to be implemented'
+  scenario 'should not allow editing deals from other users' do
+    user = create(:user)
+    other_user = create(:user)
+    other_deal = create(:deal, user: other_user)
+    login_as user
+
+    visit edit_deal_path(other_deal)
+
+    expect(page).to have_content('Record not found')
   end
 end

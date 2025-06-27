@@ -13,7 +13,7 @@ feature 'User set a deal as lost' do
 
     deal.reload
     expect(page).to have_content('Your deal was Lost!')
-    expect(page).to have_content("Current Deals: #{deal.value}")
+    expect(page).to have_content("Current Deals Value\n#{deal.value}")
     expect(page).to have_css('td', text: deal.customer)
     expect(page).to have_css('td', text: deal.description)
     expect(page).to have_no_css('td', text: 'Pending')
@@ -21,9 +21,5 @@ feature 'User set a deal as lost' do
     expect(page).to have_css('td', text: deal.closing_date_probability)
     expect(page).to have_css('td', text: deal.value)
     expect(deal).to be_lost
-  end
-
-  scenario 'should not allow marking deals as lost from other users' do
-    skip 'Needs to be implemented'
   end
 end
