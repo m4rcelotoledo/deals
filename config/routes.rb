@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root to:'deals#index'
 
   resources :deals do
-    post 'won', to: 'deals#won'
-    post 'lost', to: 'deals#lost'
+    member do
+      post 'won'
+      post 'lost'
+    end
   end
 end

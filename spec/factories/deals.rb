@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :deal do
-    customer { Faker::Books::Dune.character }
+    customer { "#{Faker::Books::Dune.character} #{rand(1000)}" }
     description { Faker::Company.name }
     status { 0 }
     closing_date_probability do

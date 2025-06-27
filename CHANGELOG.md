@@ -1,7 +1,9 @@
-# deals 0.2.5 (June 21, 2024)
+# deals 0.2.5 (June 26, 2025)
 
 * Update gems version
 * Fix coverage and Github Actions workflow
+* Update readme
+* Update Ruby and Rails versions
 
   *Marcelo Toledo*
 
