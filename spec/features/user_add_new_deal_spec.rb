@@ -15,7 +15,8 @@ feature 'User add a new deal' do
     click_on 'Create Deal'
 
     expect(page).to have_content('Your deal was successfully sent!')
-    expect(page).to have_content('Current Deals: US$ 7,5 M')
+    expect(page).to have_content('Current Deals Value')
+    expect(page).to have_css('p', text:  'US$ 7,5 M')
     expect(page).to have_css('td', text: 'Founders Brewery')
     expect(page).to have_css('td', text: 'Multi Million Dollars Sale')
     expect(page).to have_css('td', text: 'Pending')
