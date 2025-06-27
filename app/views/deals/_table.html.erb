@@ -1,35 +1,61 @@
 <% if @deals.empty? %>
-  <div class="alert alert-danger" role="alert">Don't have deals yet</div>
+  <div class="alert alert-info m-4">
+    <i class="bi bi-info-circle"></i> You don't have any deals yet. Create your first deal!
+  </div>
 <% else %>
-  <div class="container">
-    <table class="table table-bordered">
-      <thead>
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
         <tr>
           <th>Customer</th>
           <th>Description</th>
           <th>Status</th>
           <th>Closing Date/Probability</th>
-          <th>Value</th>
+          <th class="text-end">Value</th>
           <th>Actions</th>
         </tr>
       </thead>
-      <% @deals.each do |deal| %>
-        <tbody>
-          <tr>
-            <td><%= deal.customer %></td>
-            <td><%= deal.description %></td>
-            <td><%= deal.status.camelcase %></td>
-            <td><%= deal.closing_date_probability %></td>
-            <td><%= deal.value %></td>
+      <tbody>
+        <% @deals.each do |deal| %>
+          <tr id="deal-<%= deal.id %>" class="<%= cycle('', 'bg-light') %>">
+            <td><strong><%= deal.customer %></strong></td>
+            <td><%= truncate(deal.description, length: 40) %></td>
             <td>
-              <%= link_to 'Edit', edit_deal_path(deal) %> |
-              <%= link_to 'Destroy', deal_path(deal), method: :delete %> |
-              <%= link_to 'Won', deal_won_path(deal), method: :post %> |
-              <%= link_to 'Lost', deal_lost_path(deal), method: :post %>
+              <span class="badge bg-<%= status_badge_color(deal.status) %>">
+                <%= deal.status.camelcase %>
+              </span>
+            </td>
+            <td><%= deal.closing_date_probability %></td>
+            <td class="text-end fw-bold"><%= deal.value %></td>
+            <td>
+              <div class="d-flex gap-1">
+                <%= link_to edit_deal_path(deal), class: 'btn btn-sm btn-outline-primary', title: 'Edit' do %>
+                  <i class="bi bi-pencil"></i>
+                <% end %>
+
+                <%= button_to deal_path(deal), method: :delete,
+                      class: 'btn btn-sm btn-outline-danger',
+                      data: { turbo_confirm: 'Are you sure you want to delete this deal?' },
+                      title: 'Delete' do %>
+                  <i class="bi bi-trash"></i>
+                <% end %>
+
+                <%= button_to won_deal_path(deal), method: :post,
+                      class: 'btn btn-sm btn-outline-success',
+                      title: 'Mark as Won' do %>
+                  <i class="bi bi-check-circle"></i>
+                <% end %>
+
+                <%= button_to lost_deal_path(deal), method: :post,
+                      class: 'btn btn-sm btn-outline-warning',
+                      title: 'Mark as Lost' do %>
+                  <i class="bi bi-x-circle"></i>
+                <% end %>
+              </div>
             </td>
           </tr>
-        </tbody>
-      <% end %>
+        <% end %>
+      </tbody>
     </table>
   </div>
 <% end %>
