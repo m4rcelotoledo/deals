@@ -1,24 +1,55 @@
-<h3>+ Deals:</h3>
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <h1 class="display-5 fw-bold">Deals Management</h1>
+      <p class="lead">Track and manage your sales pipeline</p>
+    </div>
+  </div>
 
-<div>
-  <%= render 'form' %>
-</div>
-<br>
-<div>
-  <%= render 'modal_pipedrive' %>
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">+ Create New Deal</h5>
+    </div>
+    <div class="card-body">
+      <%= render 'form' %>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex align-items-center gap-3">
+      <div class="card">
+        <div class="card-body py-2">
+          <h6 class="card-title mb-0">Current Deals Value</h6>
+          <p class="card-text mb-0">
+            <%= @last_deal.nil? ? 'N/A' : @last_deal.value %>
+          </p>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#pipedriveModal">
+        <i class="bi bi-cloud-arrow-down"></i> Import From Pipedrive
+      </button>
+    </div>
+
+    <div class="w-50">
+      <%= form_tag(root_path, method: 'get', class: 'input-group') do %>
+        <%= text_field_tag(:q, params[:q], {
+          class: 'form-control',
+          placeholder: 'Search deals...'
+        }) %>
+        <%= submit_tag('Search', class: 'btn btn-outline-secondary') %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-light">
+      <h5 class="mb-0">Current Deals</h5>
+    </div>
+    <div class="card-body p-0">
+      <%= render partial: 'table', locals: { deal: @deals } %>
+    </div>
+  </div>
 </div>
 
-<div>
-  Current Deals: <%= @last_deal.nil? ? '' : @last_deal.value %>
-</div>
-
-<div class="">
-  <%= form_tag(root_path, method: 'get', class: 'form-inline my-2 my-lg-0' ) do %>
-    <%= text_field_tag(:q, params[:q], { class: 'form-control mr-sm-2' }) %>
-    <%= submit_tag('Search', class: 'btn btn-outline-success my-2 my-sm-0') %>
-  <% end %>
-</div>
-
-<div class="">
-  <%= render partial: 'table', locals: { deal: @deals } %>
-</div>
+<%= render 'modal_pipedrive' %>
