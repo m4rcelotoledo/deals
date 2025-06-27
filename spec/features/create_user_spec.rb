@@ -22,11 +22,11 @@ feature 'Create a user' do
     fill_in 'Password confirmation', with: '12345678'
     click_on 'Sign up'
 
-    expect(page).to have_content('Welcome new@email.com')
-    expect(page).to have_content('Log out')
-    expect(page).to have_no_content('Log in')
     expect(page).to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('+ Deals:')
+    expect(page).to have_css('span', text: 'new@email.com')
+    expect(page).to have_no_content('Log in')
+    expect(page).to have_content("You don't have any deals yet. Create your first deal!")
+    expect(page).to have_content('+ Create New Deal')
   end
 
   scenario 'and dont fill' do
@@ -57,8 +57,9 @@ feature 'Create a user' do
     fill_in 'Password', with: user.password
     click_on 'Log in'
 
-    expect(page).to have_content("Welcome #{user.email}")
-    expect(page).to have_content('Log out')
+    expect(page).to have_css('span', text: user.email)
+    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content(user.email)
     expect(page).to have_no_content('Log in')
   end
 end

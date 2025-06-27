@@ -1,8 +1,29 @@
-<% flash.each do |message_type, message| %>
-  <div class="alert alert-<%= message_type %> alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <%= message %>
+<% flash.each do |type, message| %>
+  <%
+    alert_class = case type.to_sym
+      when :notice then "alert-primary"
+      when :alert, :error then "alert-danger"
+      when :success then "alert-success"
+      when :warning then "alert-warning"
+      else "alert-info"
+    end
+
+    icon_class = case type.to_sym
+      when :notice then "bi-info-circle"
+      when :success then "bi-check-circle"
+      when :alert, :error then "bi-exclamation-circle"
+      when :warning then "bi-exclamation-triangle"
+      else "bi-info-circle"
+    end
+  %>
+
+  <div class="alert <%= alert_class %> alert-dismissible fade show d-flex align-items-center mb-4"
+       role="alert"
+       data-controller="flash-message">
+    <i class="bi <%= icon_class %> me-3" style="font-size: 1.5rem;"></i>
+    <div class="flex-grow-1">
+      <%= message %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>

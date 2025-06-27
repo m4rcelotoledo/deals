@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.progress-bar {
+  height: 3px;
+  animation: progressBar 5s linear;
+}
+
+@keyframes progressBar {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}
