@@ -14,7 +14,7 @@ feature 'User can access just his own deals' do
     visit root_path
 
     expect(page).to have_css('tr', count: 2)
-    expect(page).to have_content("Current Deals: #{deal1.value}")
+    expect(page).to have_content("Current Deals Value\n#{deal1.value}")
     expect(page).to have_css('td', text: deal1.customer)
     expect(page).to have_css('td', text: deal1.description)
     expect(page).to have_css('td', text: deal1.status.camelcase)
@@ -37,7 +37,7 @@ feature 'User can access just his own deals' do
     click_on 'Search'
 
     expect(page).to have_css('tr', count: 2)
-    expect(page).to have_content("Current Deals: #{deal3.value}")
+    expect(page).to have_content("Current Deals Value\n#{deal3.value}")
     expect(page).to have_css('td', text: deal1.customer)
     expect(page).to have_css('td', text: deal1.description)
     expect(page).to have_css('td', text: deal1.status.camelcase)
@@ -48,7 +48,7 @@ feature 'User can access just his own deals' do
     click_on 'Search'
 
     expect(page).to have_css('tr', count: 3)
-    expect(page).to have_content("Current Deals: #{deal3.value}")
+    expect(page).to have_content("Current Deals Value\n#{deal3.value}")
     expect(page).to have_css('td', text: deal1.customer)
     expect(page).to have_css('td', text: deal1.description)
     expect(page).to have_css('td', text: deal1.status.camelcase)

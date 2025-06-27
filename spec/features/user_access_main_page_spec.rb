@@ -8,15 +8,15 @@ feature 'User access main page' do
     login_as user
     visit root_path
 
-    expect(page).to have_content('+ Deals:')
-    expect(page).to have_content('Customer:')
-    expect(page).to have_content('Description:')
-    expect(page).to have_content('Value:')
+    expect(page).to have_content('+ Create New Deal')
+    expect(page).to have_content('Customer')
+    expect(page).to have_content('Description')
+    expect(page).to have_content('Value')
     expect(page).to have_button('Create Deal')
-    expect(page).to have_button('Import Deals From Pipedrive')
-    expect(page).to have_content('Current Deals:')
+    expect(page).to have_button('Import From Pipedrive')
+    expect(page).to have_content('Current Deals Value')
     expect(page).to have_button('Search')
-    expect(page).to have_content("Don't have deals yet")
+    expect(page).to have_content("You don't have any deals yet. Create your first deal!")
   end
 
   scenario 'successfully' do
@@ -25,8 +25,8 @@ feature 'User access main page' do
     login_as user
     visit root_path
 
-    expect(page).to have_button('Import Deals From Pipedrive')
-    expect(page).to have_content("Current Deals: #{deal.value}")
+    expect(page).to have_button('Import From Pipedrive')
+    expect(page).to have_content("Current Deals Value\n#{deal.value}")
     expect(page).to have_button('Search')
   end
 
