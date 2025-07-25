@@ -34,23 +34,15 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
 
-    - name: Set Timezone to -3
-      uses: szenius/set-timezone@v1.0
-      with:
-        timezoneLinux: 'America/Sao_Paulo'
-
     - name: Setup Node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '16'
+        cache: 'yarn'
         check-latest: true
 
     - name: Scan for common Rails security vulnerabilities using static analysis
       run: bundle exec brakeman --no-pager
-
-    # - name: Install PostgreSQL client
-    #   run: |
-    #     sudo apt-get -yqq install libpq-dev
 
   lint:
     runs-on: ubuntu-latest
@@ -96,9 +88,10 @@ jobs:
           timezoneLinux: 'America/Sao_Paulo'
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '16'
+          cache: 'yarn'
           check-latest: true
 
       - name: Run migrations
@@ -111,6 +104,10 @@ jobs:
           yarn install
 
       - name: Run unit tests with Rspec [backend]
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: bundle exec rspec -fd
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/.resultset.json
