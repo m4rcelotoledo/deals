@@ -1,3 +1,42 @@
+# Changelog
+
+## Migração para Node.js 20 LTS - 0.3.0 (July 25, 2025)
+
+### Adicionado
+- Migração completa para Node.js 20 LTS
+- Remoção do Webpacker (descontinuado)
+- Migração para Importmap Rails
+- Atualização do GitHub Actions para Node.js 20
+- Atualização do Dockerfile para Node.js 20
+
+### Removido
+- Dependências do Webpacker
+- Arquivos de configuração do webpack
+- Gem webpacker do Gemfile
+- Importação do bootstrap via importmap (mantido apenas via CDN)
+
+### Alterado
+- package.json simplificado para usar apenas importmap
+- Dockerfile atualizado para Node.js 20
+- GitHub Actions atualizado para Node.js 20
+- docker-compose.yml com comentários atualizados
+- app/javascript/application.js removida importação do bootstrap
+- config/importmap.rb removido bootstrap (mantido apenas turbo-rails)
+
+### Scripts
+- Criado script `script/migrate_to_node20.sh` para facilitar migrações futuras
+
+### Corrigido
+- Erro `AssetNotPrecompiledError` do bootstrap.min.js
+- Conflito entre importmap e CDN do Bootstrap
+
+### Benefícios
+- Melhor performance e segurança
+- Suporte LTS até abril de 2026
+- Configuração mais simples com Importmap
+- Menor uso de memória
+- Aplicação funcionando corretamente com Node.js 20
+
 # deals 0.2.5 (June 26, 2025)
 
 * Update gems version
