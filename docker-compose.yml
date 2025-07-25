@@ -1,5 +1,5 @@
-# https://github.com/marcelotoledo5000/Dockerfiles/blob/master/alpine3.14-ruby3.0-node14-yarn1.22/Dockerfile
-# https://hub.docker.com/repository/docker/skygvinn/alpine3.14-ruby3.0-node14.18-yarn1.22
+# https://github.com/marcelotoledo5000/Dockerfiles/blob/master/alpine3.14-ruby3.4-node20-yarn1.22/Dockerfile
+# https://hub.docker.com/repository/docker/skygvinn/alpine3.14-ruby3.4-node20-yarn1.22
 
 version: '3.9'
 

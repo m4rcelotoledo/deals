@@ -1,8 +1,8 @@
-# TO USE: skygvinn/alpine3.14-ruby3.0-node14.18-yarn1.22:v1.0
+# TO USE: skygvinn/alpine3.14-ruby3.4-node20-yarn1.22:v1.0
 
 FROM ruby:3.4.4-alpine3
 
-LABEL name="Alpine3.14-Ruby-3.0-Node14.18-Yarn1.22" \
+LABEL name="Alpine3.14-Ruby-3.4-Node20-Yarn1.22" \
       version="1.0" \
       author="Marcelo Toledo, aka Skygvinn"
 
@@ -12,6 +12,7 @@ RUN apk add --update --no-cache \
     coreutils \
     git \
     nodejs \
+    npm \
     postgresql-dev \
     tzdata \
     yarn \

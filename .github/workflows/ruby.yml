@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.4.4'] #['2.7', '3.0'] # WARNING: this option use double billable time on Actions
+        ruby-version: ['3.4.4']
 
     services:
       postgres:
@@ -37,7 +37,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '20'
         cache: 'yarn'
         check-latest: true
 
@@ -46,6 +46,9 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.4.4']
     steps:
     - uses: actions/checkout@v4
 
@@ -60,6 +63,9 @@ jobs:
 
   rspec:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.4.4']
     services:
       postgres:
         image: postgres
@@ -90,7 +96,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           cache: 'yarn'
           check-latest: true
 
