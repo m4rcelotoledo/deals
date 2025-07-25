@@ -17,7 +17,6 @@ gem 'puma'
 gem 'rails'
 gem 'sass-rails'
 gem 'turbolinks'
-gem 'webpacker'
 
 group :development, :test do
   gem 'brakeman'
