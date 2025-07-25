@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'simplecov'
-require 'codecov'
 
 SimpleCov.start 'rails' do
   add_filter '/channels/'
@@ -10,10 +9,7 @@ SimpleCov.start 'rails' do
 
   enable_coverage :branch
   SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
-    [
-      SimpleCov::Formatter::HTMLFormatter,
-      SimpleCov::Formatter::Codecov
-    ]
+    [SimpleCov::Formatter::HTMLFormatter]
   )
 end
 
