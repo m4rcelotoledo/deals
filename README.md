@@ -1,15 +1,15 @@
 # **DEALS**
 
-[![codebeat badge][codebeat-badge]][codebeat] [![Coverage][codecov-badge]][codecov] [![Ruby Build][actions-badge]][actions]
+[![Coverage][codecov-badge]][codecov] [![Ruby Build][actions-badge]][actions]
 
 ## About this project
 
-The proposal of this project is to enable the user to control and follow up on
+This project proposes to enable the user to control and follow up on
 their commercial goals, defined for each of their clients.
 
 To run on Heroku, [access here](https://mydeals.herokuapp.com/)
 
-## Technical Informations and dependencies
+## Technical Information and Dependencies
 
 ``` code
 * The Ruby language   # version 3.4.4
@@ -100,9 +100,6 @@ heroku open
 * Set the following gems:
   * Pundit
   * Kaminari
-
-[codebeat-badge]: https://codebeat.co/badges/e1349c62-9aa1-4a7d-bde9-d575e065fd6d
-[codebeat]: https://codebeat.co/projects/github-com-m4rcelotoledo-deals-master
 
 [codecov-badge]: https://codecov.io/gh/m4rcelotoledo/deals/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/m4rcelotoledo/deals
