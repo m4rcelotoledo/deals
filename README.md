@@ -12,7 +12,7 @@ To run on Heroku, [access here](https://mydeals.herokuapp.com/)
 ## Technical Information and Dependencies
 
 ``` code
-* The Ruby language   # version 3.4.4
+* The Ruby language   # version 3.4.6
 * The Rails gem       # version 8.0.2
 * Capybara:           # version 3.40
 * RSpec-Rails         # version 8.0.1

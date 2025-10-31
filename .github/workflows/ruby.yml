@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.4.4']
+        ruby-version: ['3.4.6']
 
     services:
       postgres:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.4.4']
+        ruby-version: ['3.4.6']
     steps:
     - uses: actions/checkout@v4
 
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.4.4']
+        ruby-version: ['3.4.6']
     services:
       postgres:
         image: postgres

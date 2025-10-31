@@ -1,6 +1,6 @@
 # TO USE: skygvinn/alpine3.14-ruby3.4-node20-yarn1.22:v1.0
 
-FROM ruby:3.4.4-alpine3
+FROM ruby:3.4.6-alpine3
 
 LABEL name="Alpine3.14-Ruby-3.4-Node20-Yarn1.22" \
       version="1.0" \
