@@ -35,7 +35,7 @@ jobs:
         bundler-cache: true
 
     - name: Setup Node
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '20'
         cache: 'yarn'
@@ -50,7 +50,7 @@ jobs:
       matrix:
         ruby-version: ['3.4.6']
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -80,7 +80,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -89,12 +89,12 @@ jobs:
           bundler-cache: true
 
       - name: Set Timezone to -3
-        uses: szenius/set-timezone@v1.0
+        uses: szenius/set-timezone@v2
         with:
           timezoneLinux: 'America/Sao_Paulo'
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'yarn'
